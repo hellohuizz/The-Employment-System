@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+ 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<script type="text/javascript" src="{% static 'js/home_js/jquery.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/home_js/bootstrap.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/home_css/bootstrap.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/home_css/bootstrap-theme.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/home_css/swiper.css' %}" />
+		<script type="text/javascript" src="{% static 'js/home_js/swiper.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/home_css/reset.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home_css/._reset.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/home_css/home.css' %}"/>
+		<script type="text/javascript" src="{% static 'js/home_js/home.js' %}" ></script>
+	    <title>首页</title>
+	</head>
+
+	<body style="margin:0px;padding:0px" >
+		<div class="container-fluid">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">JobBooks</a>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						    {% if is_login %}
+						    <li>
+							<a class="icon" href="{% url 'App:userinfo' %}" title="点击头像或用户名修改用户信息">
+								<img width="40" height="40" src="{{ user_img }}">
+							</a>
+						    </li>
+						    <li>
+						        <a href="{% url 'App:userinfo' %}"><span style="color: #c4e3f3;font-weight: 700;">欢迎回来：{{ username }}&nbsp;&nbsp;&nbsp;&nbsp</span></a>
+						    <li/>
+						    {% else %}
+                            <li>
+                                <a href="{% url 'App:register' %}">注册</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'App:login' %}">登陆</a>
+                            </li>
+						    {% endif %}
+
+						<!--<li>
+							<a class="icon" href="#">
+								<img width="40" height="40" class="img-circle" alt="" src="https://cs.vmovier.com/Uploads/Banner/2017/12/23/5a3d52d82724d.png" />
+							</a>
+						</li>
+
+						<li>
+							<a href=""><span>Username</span></a>
+						</li>-->
+					</ul>
+				</div>
+			</nav>
+{#        <div style="width: 100%;height: 520px;background: url({% static 'img/home_images/back0.jpg' %})">#}
+{#			<div class="swiper-container"style="width:100%">#}
+{#				<div class="swiper-wrapper"style="width:100%">#}
+{#					<div class="swiper-slide"style="width:100%" >#}
+{#                        <div style="margin-top:50px;background:url({% static 'img/home_images/zp.jpg' %});height:500px;width:100%">#}
+{#                            <img src="{% static 'img/home_images/51job.jpg' %}" style="width:280px;height:150px;margin-left:10px;margin-top:265px">#}
+{#                             <img src="{% static 'img/home_images/liepin.jpg ' %}" style="width:300px;height:170px;margin-left:20px;margin-top:140px">#}
+{#                            <img src="{% static 'img/home_images/zhilian.jpg' %}" style="width:200px;height:160px;margin-left:10px;margin-top:280px">#}
+{#                            <img src="{% static 'img/home_images/bosszhipin.jpg ' %}" style="width:250px;height:140px;margin-left:70px;margin-top:125px">#}
+{#                        </div>#}
+{#					</div>#}
+{#					<div class="swiper-slide" >#}
+{#					 <div style="margin-top:50px;background:url({% static 'img/home_images/back_sw2.jpg'%});height:500px;width: 100%">#}
+{#                        <img src="{% static 'img/home_images/IT.png'%}" style="height:405px;width:940px;margin-left: 150px;margin-top: 20px">#}
+{#                     </div>#}
+{#                    </div>#}
+{#                    <div class="swiper-slide" >#}
+{#					 <div style="margin-top:50px;background:url({% static 'img/home_images/back_sw3.jpg'%});height:500px">#}
+{#                        <img src="{% static 'img/home_images/'%}" style="height:405px;width:940px;margin-left: 50px;margin-top: 20px">#}
+{#                     </div>#}
+{#                    </div>#}
+{#				</div>#}
+{#				<!-- Add Pagination -->#}
+{#				<div class="swiper-pagination swiper-pagination-white"></div>#}
+{#				<!-- Add Arrows -->#}
+{#				<div class="swiper-button-next swiper-button-white"></div>#}
+{#				<div class="swiper-button-prev swiper-button-white"></div>#}
+{#			</div>#}
+            <ul>
+                <li><a href="">北京</a></li>
+                <li><a href="">上海</a></li>
+                <li><a href="">杭州</a></li>
+                <li><a href="">深圳</a></li>
+                <li><a href="">郑州</a></li>
+            </ul>
+        </div>
+		</div>
+        <div style="height: 1000px;width: 100%" >
+
+        </div>
+	<div class="footer">
+	    <div class="tip1">
+	    <a href="/app_vmovier" target="_blank">客户端</a>
+		<a href="/media" target="_blank">媒体报道</a>
+		<a href="http://www.xinpianchang.com/project/make" target="_blank">合作推广</a>
+		<a href="/contact" target="_blank">关于我们</a>
+		<a href="/join" target="_blank">加入我们</a>
+		<a href="http://www.vmovier.com/hall-of-fame" target="_blank">场库名人堂</a>
+		<a href="/link">更多友情链接</a></div>
+		<div class="tip2">
+            <span>Copyright © 2011-2018 &nbsp;&nbsp;</span>
+            <a href="/">场库</a> &nbsp;&nbsp;
+            <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备14003808号-5</a> &nbsp;&nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102002904"><p>京公网安备11010102002904号</p></a>
+            &nbsp;
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/cn/"></a>
+        </div>
+    </div>
+	</body>
+</html>
