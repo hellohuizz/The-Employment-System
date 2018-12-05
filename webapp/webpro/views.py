@@ -32,25 +32,25 @@ def make_token():
 
 # 视图函数部分
 
-def get_jobinfo(request):
-    job_name_dict ={}
-    jobinfos = Jobinfo.objects.all()
-    for jobinfo in jobinfos:
-        job_name = jobinfo.jobname
-
-        if job_name not in job_name_dict.keys():
-            job_name_dict[job_name] = 1
-
-        else:
-            job_name_dict[job_name] += 1
-
-
-    #构建柱状图
-    attr = job_name_dict.kyes()
-    v1 = job_name_dict.values()
-    bar = Bar('各职位在招统计图')
-    bar.add("智联招聘", attr, v1, is_stack=True)
-    return render(request,'get_jobinfo.html',context={'key':key})
+# def get_jobinfo(request):
+#     job_name_dict ={}
+#     jobinfos = Jobinfo.objects.all()
+#     for jobinfo in jobinfos:
+#         job_name = jobinfo.jobname
+#
+#         if job_name not in job_name_dict.keys():
+#             job_name_dict[job_name] = 1
+#
+#         else:
+#             job_name_dict[job_name] += 1
+#
+#
+#     #构建柱状图
+#     attr = job_name_dict.kyes()
+#     v1 = job_name_dict.values()
+#     bar = Bar('各职位在招统计图')
+#     bar.add("智联招聘", attr, v1, is_stack=True)
+#     return render(request,'get_jobinfo.html',context={'key':key})
 
 
 def home_page(request):
@@ -79,22 +79,22 @@ def save_user(request):
     user.save()
 
     #保存完注册信息之后跳转到注册成功页面
-    response = HttpResponseRedirect(reversed("webpro:register_success"))
-    response.set_cookie('u_token',u_token)
+    # response = HttpResponseRedirect(reversed("webpro:register_success"))
+    # response.set_cookie('u_token',u_token)
 
-    return response
+    return HttpResponse('注册成功')
 
 
-def register_success(request):
-    #拿到服务器传过来的token
-    u_token = request.COOKIES.get('u_token')
-
-    if u_token:
-        users = User.objects.filter(u_token=u_token)
-        if users.exists():
-            user = users.filter()
-
-    return render(request,'register_success.html',context={'user':user})
+# def register_success(request):
+#     #拿到服务器传过来的token
+#     u_token = request.COOKIES.get('u_token')
+#
+#     if u_token:
+#         users = User.objects.filter(u_token=u_token)
+#         if users.exists():
+#             user = users.filter()
+#
+#     return render(request,'register_success.html',context={'user':user})
 
 
 def login_user(request):

@@ -1,5 +1,5 @@
 <!doctype html>
-{% load static %}
+<!--{% load static %}-->
 <html>
 <head>
 <title>Home</title>
@@ -26,15 +26,16 @@
 <div class="log" style="margin-top:5px;">
 	<div class="content2"style="border-radius:20px">
 		<h2>注册成为XXX用户</h2>
-		<form action="{% url 'App:register' %}" method="post" enctype="multipart/form-data">
+        <!--http://localhost:8000/webpro/register-->
+		<form action="{% url 'http://localhost:8000/webpro/register' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-			<input type="text" value="USERNAME" name="username" class="form-control">
+			<input type="text" value="USERNAME" name="u_username" class="form-control">
 			<p class="help-block">请输入6位以上用户名</p>	
-			<input type="tel" name="usrtel" value="PHONE" >
+			<input type="tel" name="u_phone" value="PHONE" >
 			<p class="help-block">请输入正确格式手机号</p>	
-			<input type="email" name="email" value="EMAIL ADDRESS" class="form-control">
+			<input type="email" name="u_email" value="EMAIL ADDRESS" class="form-control">
 			<p class="help-block">请输入正确格式邮箱</p>	
-			<input type="password" name="password" value="PASSWORD" placeholder="请输入密码" class="form-control" >
+			<input type="password" name="u_password" value="PASSWORD" placeholder="请输入密码" class="form-control" >
 			<p class="help-block">请输入6位以上字母组合密码</p>	
 			<input type="password" name="repassword" value="PASSWORD" placeholder="请再次输入密码" class="form-control">
 			<p class="help-block">两次输入密码不一致</p>
