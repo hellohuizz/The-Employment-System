@@ -1,5 +1,4 @@
 <!doctype html>
-<!--{% load static %}-->
 <html>
 <head>
 <title>Home</title>
@@ -24,19 +23,17 @@
 </head>
 <body>
 <div class="log" style="margin-top:5px;">
-	<div class="content2"style="border-radius:20px">
+	<div class="content2" style="border-radius:20px">
 		<h2>注册成为XXX用户</h2>
-        <!--http://localhost:8000/webpro/register-->
-		<form action="{% url 'http://localhost:8000/webpro/register' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-			<input type="text" value="USERNAME" name="u_username" class="form-control">
-			<p class="help-block">请输入6位以上用户名</p>	
-			<input type="tel" name="u_phone" value="PHONE" >
-			<p class="help-block">请输入正确格式手机号</p>	
-			<input type="email" name="u_email" value="EMAIL ADDRESS" class="form-control">
-			<p class="help-block">请输入正确格式邮箱</p>	
-			<input type="password" name="u_password" value="PASSWORD" placeholder="请输入密码" class="form-control" >
-			<p class="help-block">请输入6位以上字母组合密码</p>	
+		<form action="#" method="post" enctype="multipart/form-data" id="f1">
+			<input type="text" value="USERNAME" name="username" class="form-control" id="name">
+			<p class="help-block">请输入6位以上用户名</p>
+			<input type="text" name="usrtel" placeholder="PHONE" id="ph" class="form-control">
+			<p class="help-block">请输入正确格式手机号</p>
+			<input type="email" name="email" value="EMAIL ADDRESS" class="form-control" id="mail">
+			<p class="help-block">请输入正确格式邮箱</p>
+			<input type="password" name="password" value="PASSWORD" placeholder="请输入密码" class="form-control" id="psw">
+			<p class="help-block">请输入6位以上字母组合密码</p>
 			<input type="password" name="repassword" value="PASSWORD" placeholder="请再次输入密码" class="form-control">
 			<p class="help-block">两次输入密码不一致</p>
             <br>
@@ -44,8 +41,8 @@
             <label style="font-size: 20px;font-weight: 700;margin-left:30px">
                 请设置您的用户头像
             </label>
-            <input type="file" name="img">
-			<input type="submit" class="register" value="点击注册" name="repassword">
+            <input type="file" name="img" id="con">
+			<input type="submit" class="register" value="点击注册" id="btn">
 		</form>
 	</div>
 	<div class="clear"></div>
@@ -54,7 +51,7 @@
 	<p></p>
 </div>
 </body>
-<script>
+<script type="text/javascript">
 $('input[name=username]').blur(function(){
     val=this.value;
 
@@ -103,6 +100,18 @@ $('input[name=email]').blur(function(){
     }
 });
 
+$('input[name=usrtel]').blur(function(){
+    val=this.value;
+
+    if(val.length!=11){
+        $(this).data({'s':0});
+        $(this).next().show();
+    }else{
+        $(this).data({'s':1});
+        $(this).next().hide();
+    }
+});
+
 $('form').submit(function(){
     $('.form-control').blur();
     tot=0;
@@ -111,9 +120,21 @@ $('form').submit(function(){
         tot+=$(this).data('s');
     });
     console.log(tot)
-    if(tot!=4){
+    if(tot!=5){
         return false;
     }
-});
-    </script>
+    });
+ </script>
+<script>
+    $('#btn').click(function () {
+        $.ajax({
+            type:'post',
+{#            url定位到注册函数#}
+            url:'/register/',
+            success:function (data) {
+                alert(data)
+            }
+        })
+    })
+</script>
 </html>
